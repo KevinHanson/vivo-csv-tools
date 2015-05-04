@@ -1,5 +1,5 @@
-python import_csv.py orgs
-python import_csv.py people
-python import_csv.py positions
-python import_csv.py articles
-python import_csv.py authors
+./import_csv.py orgs
+./import_csv.py people
+./import_csv.py positions
+./import_csv.py articles
+./import_csv.py authors

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import ConfigParser
 import sys
 from template_graph import TemplateGraph
@@ -7,7 +8,7 @@ def get_config(config, section, name):
     try:
         return config.get(section, name)
     except:
-        return config.get("main", name)
+        return config.get("default", name)
 
 
 def main():
