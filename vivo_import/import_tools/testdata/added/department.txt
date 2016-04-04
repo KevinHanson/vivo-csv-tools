@@ -1,0 +1,2 @@
+<http://vivo.dartmouth.edu/individual/n1627> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vivoweb.org/ontology/core#AcademicDepartment> .
+<http://vivo.dartmouth.edu/individual/n1627> <http://www.w3.org/2000/01/rdf-schema#label> "XDepartment"^^<http://www.w3.org/2001/XMLSchema#string> .

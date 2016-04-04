@@ -1,0 +1,20 @@
+<p>
+  {% csrf_token %}
+  <span style="font-size: larger">
+  {{info.title}}<br>
+  Published: {{info.year}}<br>
+  Journal: {{info.journal}}<br>
+  Authors: {{info.authors}}<br>
+  PubmedID: {{ art }}
+  {% if info.pmc %}
+    <br><a target=_blank href="http://www.ncbi.nlm.nih.gov/pmc/articles/{{info.pmc}}/">Full article</a>
+  {% endif %}
+  </span>
+</p>
+<p>Are you an author of this article?<p />
+<input class="yesno" type=submit value="Yes" onclick="submit('show{{ art }}')">
+<input class="yesno" type=submit value="No" onclick="submit('no{{ art }}')">
+<p>
+<div id=more>
+  {{ count }} more possible articles have been found.
+</div>

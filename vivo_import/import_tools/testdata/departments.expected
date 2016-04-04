@@ -1,0 +1,6 @@
+<http://destination.dartmouth.edu/vivo/individual/org1000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vivoweb.org/ontology/core#AcademicDepartment> .
+<http://destination.dartmouth.edu/vivo/individual/org1000> <http://www.w3.org/2000/01/rdf-schema#label> "Anatomy"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://destination.dartmouth.edu/vivo/individual/org1001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vivoweb.org/ontology/core#AcademicDepartment> .
+<http://destination.dartmouth.edu/vivo/individual/org1001> <http://www.w3.org/2000/01/rdf-schema#label> "Anesthesiology"^^<http://www.w3.org/2001/XMLSchema#string> .
+

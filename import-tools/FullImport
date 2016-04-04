@@ -1,5 +1,0 @@
-./import_csv.py orgs
-./import_csv.py people
-./import_csv.py positions
-./import_csv.py articles
-./import_csv.py authors

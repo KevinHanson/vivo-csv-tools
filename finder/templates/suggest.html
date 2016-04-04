@@ -1,0 +1,203 @@
+<meta charset="utf-8" />
+<!-- Google Chrome Frame open source plug-in brings Google Chrome's open web technologies and speedy JavaScript engine to Internet Explorer-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>VIVO</title>
+
+
+
+<!-- vitro base styles (application-wide) -->
+<link rel="stylesheet" href="http://vivo.dartmouth.edu/vivo/css/vitro.css" />
+
+<link rel="stylesheet" href="http://vivo.dartmouth.edu/vivo/templates/freemarker/edit/forms/css/customForm.css" />
+<link rel="stylesheet" href="http://vivo.dartmouth.edu/vivo/js/jquery-ui/css/smoothness/jquery-ui-1.8.9.custom.css" />
+
+<link rel="stylesheet" href="http://vivo.dartmouth.edu/vivo/css/edit.css" /><link rel="stylesheet" href="http://vivo.dartmouth.edu/vivo/themes/dartmouth/css/screen.css" />
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+  function submit(v) {
+    $.ajaxSetup({
+      data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+    });
+    $("#status").html("Updating...");
+    $.post("/{{ identity.UID }}/suggest", {submit: v}, function(data) {
+      $("#status").html("");
+      $("#article").html(data);
+    });
+  }
+</script>
+
+<style>.yesno {font-size: larger;padding: 6px;}</style>
+
+<script>
+var i18nStrings = {
+allCapitalized: 'All',
+};
+</script>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/jquery.js"></script>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/vitroUtils.js"></script>
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/html5.js"></script>
+<![endif]-->
+
+
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/selectivizr.js"></script>
+<![endif]-->
+
+
+
+<link rel="shortcut icon" type="image/x-icon" href="http://vivo.dartmouth.edu/vivo/favicon.ico">    </head>
+
+<body class="managePublications loggedIn" onload="">
+
+<header id="branding" role="banner">
+
+<h1 class="vivo-logo"><a title="VIVO | connect share discover" href="http://vivo.dartmouth.edu/vivo"><span class="displace">VIVO</span></a></h1>
+
+<nav role="navigation">
+<ul id="header-nav" role="list">
+
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/browse" title="Index">Index</a></li>
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/siteAdmin" title="Site Admin">Site Admin</a></li>
+<li>
+<ul class="dropdown">
+<li id="user-menu"><a href="#" title="user">My Account</a>
+<ul class="sub_menu">
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/accounts/myAccount" title="My account">My account</a></li>
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/logout" title="Log out">Log out</a></li>
+</ul>
+</li>
+</ul>
+</li>
+
+
+
+
+
+</ul>
+
+</nav>
+<section id="search" role="region">
+<fieldset>
+<legend>Search form</legend>
+
+<form id="search-form" action="http://vivo.dartmouth.edu/vivo/search" name="search" role="search" accept-charset="UTF-8" method="POST">
+<div id="search-field">
+<input type="text" name="querytext" class="search-vivo" value="" autocapitalize="off" />
+<input type="submit" value="Search" class="search">
+</div>
+</form>
+</fieldset>
+</section>
+
+</header>
+
+
+<div id="developerPanel" > </div>
+<script>
+developerAjaxUrl = 'http://vivo.dartmouth.edu/vivo/admin/developerAjax'
+developerCssLinks = ["http://vivo.dartmouth.edu/vivo/css/developer/developerPanel.css", "http://vivo.dartmouth.edu/vivo/js/jquery-ui/css/smoothness/jquery-ui-1.8.9.custom.css"]
+</script>
+
+
+
+<nav role="navigation">
+<ul id="main-nav" role="list">
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/" title="Home menu item" >Home</a></li>
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/people" title="People menu item" >People</a></li>
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/organizations" title="Organizations menu item" >Organizations</a></li>
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/research" title="Research menu item" >Research</a></li>
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/events" title="Events menu item" >Events</a></li>
+</ul>
+</nav>
+
+<div id="wrapper-content" role="main">
+
+<!--[if lte IE 8]>
+<noscript>
+<p class="ie-alert">This site uses HTML elements that are not recognized by Internet Explorer 8 and below in the absence of JavaScript. As a result, the site will not be rendered appropriately. To correct this, please either enable JavaScript, upgrade to Internet Explorer 9, or use another browser. Here are the <a href="http://www.enable-javascript.com"  title="java script instructions">instructions for enabling JavaScript in your web browser</a>.</p>
+</noscript>
+<![endif]-->
+
+<h2>Add Publications for {{ identity.first_name }} {{ identity.last_name }}</h2>
+<p style="margin-left:25px;margin-bottom:12px">
+Check those publications you want to exclude from the profile page.
+<script type="text/javascript">
+var publicationData = [];
+</script>
+</p>
+
+<div id="ie67DisableWrapper">
+<div id="ie67DisableContent">
+<img src="http://vivo.dartmouth.edu/vivo/images/iconAlertBig.png" alt="Alert Icon"/>
+<p>This form is not supported in versions of Internet Explorer below version 8. Please upgrade your browser, or switch to another browser, such as FireFox.</p>
+</div>
+</div>
+
+
+<h4>
+Academic Articles
+</h4>
+<section id="pubsContainer" role="container">
+<div id=article>
+  {% include "article.html" %}
+</div>
+
+<div id=status></div>
+</section>
+
+<br />
+
+<p>
+<a href="http://vivo.dartmouth.edu/vivo/display/per{{ identity.UID }}#publications" title="Return to Profile Page">Return to Profile Page</a>
+</p>
+
+<script type="text/javascript">
+var customFormData = {
+processingUrl: 'http://vivo.dartmouth.edu/vivo/edit/primitiveRdfEdit'
+};
+var i18nStrings = {
+publicationSuccessfullyExcluded: 'The publication will has been successfully excluded from the profile page.',
+errorExcludingPublication: 'Error processing request: the publication cannot be excluded from the profile page.'
+};
+</script>
+
+
+
+
+
+
+
+
+</div> <!-- #wrapper-content -->
+
+<footer role="contentinfo">
+<p class="copyright">
+<small>&copy;2015
+VIVO Project
+| <a class="terms" href="http://vivo.dartmouth.edu/vivo/termsOfUse" title="Terms of Use">Terms of Use</a></small> |
+Powered by <a class="powered-by-vivo" href="http://vivoweb.org" target="_blank" title="Powered by VIVO"><strong>VIVO</strong></a>
+| Version <a href="http://vivo.dartmouth.edu/vivo/revisionInfo" title="Version">rel-1.7</a>
+</p>
+
+<nav role="navigation">
+<ul id="footer-nav" role="list">
+<li role="listitem"><a href="http://vivo.dartmouth.edu/vivo/about" title="About">About</a></li>
+<li role="listitem"><a href="http://www.vivoweb.org/support" target="blank" title="Support">Support</a></li>
+</ul>
+</nav>
+</footer>
+
+
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/utils.js"></script>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/jquery-ui/js/jquery-ui-1.8.9.custom.min.js"></script>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/customFormUtils.js"></script>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/templates/freemarker/edit/forms/js/managePublicationsForIndividual.js"></script>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/userMenu/userMenuUtils.js"></script>
+<script type="text/javascript" src="http://vivo.dartmouth.edu/vivo/js/developer/developerPanel.js"></script>
